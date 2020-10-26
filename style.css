@@ -1,0 +1,32 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    background-image: url("img/bg.jpg");
+    background-size: cover;
+    font-family: 'Glegoo', serif;
+    color: azure;
+    
+}
+
+.wrapper{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.center-box{
+    padding: 20px;
+    height: 270px;
+    width: 300px;
+    background-color: burlywood;
+    border-radius: 20px;
+}
+
+h1{
+    border-bottom: black solid 2px;
+    margin-bottom: 10px;
+}

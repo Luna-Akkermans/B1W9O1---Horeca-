@@ -1,22 +1,17 @@
 const drinkNames = drinks.map(key => key.name);
 const resultLi = document.createElement('li');
 var orderStatus = true;
-
 var orderQuestion = (typeArray, index, nameOfItem) => {
     typeArray[index].amount = Number(prompt(`Vul aantal ${nameOfItem} in, wilt u toch geen ${nameOfItem} laat het veld leeg en druk oké.`));
 }
 
-var calcuLateCart = () => {
-    drinks.forEach(function (key) {
+var calcuLateCart = (arrayToCalc) => {
+    arrayToCalc.forEach(function (key) {
         if (key.amount != 0 && !isNaN(key.amount)) {
             invoice[key.name] = new invoiceCreation(key.name, key.amount, key.price);
         }
     })
-    snacks.forEach(function (key) {
-        if (key.amount != 0 && !isNaN(key.amount)) {
-            invoice[key.name] = new invoiceCreation(key.name, key.amount, key.price);
-        }
-    })
+
     for (key in invoice) {
         resultLi.innerHTML = `<span>${invoice[key].name} </span> <span>${invoice[key].amount} </span> <span>${invoice[key].total} </span>`
         if(invoice.length >= 0){
@@ -39,10 +34,18 @@ do {
             orderQuestion(drinks, 2, "fris")
             break;
         case "snacks":
-            snackOrder();
-            break;
+            switch(prompt("Hoeveel wilt u? \n 8 of 16")){
+                case "8":
+                    orderQuestion(snacks, 0, "8 Bitterballen")
+                    break
+                case "16":
+                    orderQuestion(snacks, 1, "16 Bitterballen")
+                    break;
+            }
+            break;  
         case "stop":
-            calcuLateCart();
+            calcuLateCart(drinks);
+            calcuLateCart(snacks);
             orderStatus = false;
             break;
     }

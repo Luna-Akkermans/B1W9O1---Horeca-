@@ -18,12 +18,9 @@ var calcuLateCart = (arrayToCalc) => {
          rekening.appendChild(resultLi)
         }
     }
-    
-
 }
 do {
-    let UserInput = prompt("Wat wil jij bestellen? \n" + drinkNames + " Snacks").toLowerCase();
-    switch (UserInput) {
+    switch (prompt("Wat wil jij bestellen? \n" + drinkNames + " Snacks").toLowerCase()) {
         case "fristi":
             orderQuestion(drinks, 0, "fristi")
             break;
@@ -34,7 +31,7 @@ do {
             orderQuestion(drinks, 2, "fris")
             break;
         case "snacks":
-            switch(prompt("Hoeveel wilt u? \n 8 of 16")){
+            switch(prompt("Hoeveel wilt u? \n 8 of 16").toLowerCase()){
                 case "8":
                     orderQuestion(snacks, 0, "8 Bitterballen")
                     break

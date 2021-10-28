@@ -1,14 +1,18 @@
-const drinkNames = items.map(key => key.name);
-const drinkPrices = items.map(key => key.price);
+const drinkNames = drinks.map(key => key.name);
 const resultLi = document.createElement('li');
 var orderStatus = true;
 
-var orderQuestion = (index, nameOfDrink) => {
-    items[index].amount = Number(prompt(`Vul aantal ${nameOfDrink} in, wilt u toch geen fristi laat het veld leeg en druk oké.`));
+var orderQuestion = (typeArray, index, nameOfItem) => {
+    typeArray[index].amount = Number(prompt(`Vul aantal ${nameOfItem} in, wilt u toch geen ${nameOfItem} laat het veld leeg en druk oké.`));
 }
 
 var calcuLateCart = () => {
-    items.forEach(function (key) {
+    drinks.forEach(function (key) {
+        if (key.amount != 0 && !isNaN(key.amount)) {
+            invoice[key.name] = new invoiceCreation(key.name, key.amount, key.price);
+        }
+    })
+    snacks.forEach(function (key) {
         if (key.amount != 0 && !isNaN(key.amount)) {
             invoice[key.name] = new invoiceCreation(key.name, key.amount, key.price);
         }
@@ -23,16 +27,19 @@ var calcuLateCart = () => {
 
 }
 do {
-    let UserInput = prompt("Wat wil jij bestellen? \n" + drinkNames + "\n" + drinkPrices).toLowerCase();
+    let UserInput = prompt("Wat wil jij bestellen? \n" + drinkNames + " Snacks").toLowerCase();
     switch (UserInput) {
         case "fristi":
-            orderQuestion(0, "fristi")
+            orderQuestion(drinks, 0, "fristi")
             break;
         case "bier":
-            orderQuestion(1, "bier")
+            orderQuestion(drinks, 1, "bier")
             break;
         case "fris":
-            orderQuestion(2, "fris")
+            orderQuestion(drinks, 2, "fris")
+            break;
+        case "snacks":
+            snackOrder();
             break;
         case "stop":
             calcuLateCart();
@@ -40,3 +47,5 @@ do {
             break;
     }
 } while (orderStatus)
+
+

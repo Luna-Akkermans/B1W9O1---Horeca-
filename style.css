@@ -30,7 +30,7 @@ body{
 h1{
     margin-bottom: 10px;
 }
-#rekening > li{
+#rekening > li, #totaal{
     display: flex;
     justify-content: space-between;
     color:black;

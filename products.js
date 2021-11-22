@@ -43,12 +43,3 @@ var cart = [{
         }]
     }
 ];
-
-
-
-
-function invoiceCreation(name, amount, price) {
-    this.name = name;
-    this.amount = amount;
-    this.total = '€' + amount * price;
-}

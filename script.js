@@ -5,7 +5,11 @@ var totalOrderPrice = 0;
 const orderQuestion = (input) => {
     cartIndex = cart.findIndex(item => item.name === input);
     if(input != 'Snacks'){
-        cart[cartIndex].amount = Number(prompt(`Vul aantal ${cart[cartIndex].name} in, wilt u toch geen ${cart[cartIndex].name} laat het veld leeg en druk oké.`));
+        var amountOfProduct = Number(prompt(`Vul aantal ${cart[cartIndex].name} in, wilt u toch geen ${cart[cartIndex].name} laat het veld leeg en druk oké.`));
+        console.log(amountOfProduct);
+        if(amountOfProduct !== 0){
+            cart[cartIndex].amount = amountOfProduct;
+        }
     }else{
         amountOfSnacks = Number(prompt("Wilt u 8 of 16 snacks?"));
         if(amountOfSnacks == 8){
